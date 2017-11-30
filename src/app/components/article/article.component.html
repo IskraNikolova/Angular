@@ -1,0 +1,21 @@
+<div *ngIf="article">
+  <div>
+      {{article?.title}}
+      <button class="button del" (click)="deleteArticle(article.id)">x</button>
+  </div>
+  <div>
+      {{article?.author}}
+  </div>
+
+  <button *ngIf="!this.article.hide" class="button-info" (click)="readMore()">Read More</button>
+  <button *ngIf="this.article.hide" class="button-info" (click)="hideText()">Hide Desc</button>
+
+  <button *ngIf="!this.article.showImage" class="button-info" (click)="show()">Show Image</button>
+  <button *ngIf="this.article.showImage" class="button-info" (click)="hideImage()">Hide Image</button>
+  <div>
+      {{trunc(article?.text)}}
+   </div> 
+   <div *ngIf="this.article.showImage">
+      <img (click)="hideImage()" src="{{article?.link}}"/>
+   </div>
+</div>
